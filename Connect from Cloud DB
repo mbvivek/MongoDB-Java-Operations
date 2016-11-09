@@ -1,0 +1,42 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package DataBase;
+
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+
+/**
+ *
+ * @author mbviv
+ */
+public class DBConnection {
+    
+	private static DBConnection dbConnection;
+	
+    private MongoClientURI clientURI = new MongoClientURI("Your Cloud URI");
+    private MongoClient client = new MongoClient(clientURI);
+    
+    private DBConnection()
+    {
+        
+    }
+    
+    public static DBConnection getInstance()
+    {
+    	if(dbConnection == null)
+    	{
+    		dbConnection = new DBConnection();
+    	}
+    	
+    	return dbConnection;
+    }
+    
+    public MongoClient getClient()
+    {
+    	return client;
+    }    
+    
+}
