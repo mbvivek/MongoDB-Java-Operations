@@ -37,6 +37,16 @@ public class DBConnection {
     public MongoClient getClient()
     {
     	return client;
-    }    
+    }  
+    
+    public MongoDatabase getDatabase(String databaseName)
+    {
+	return client.getDatabase(databaseName);
+    }
+    
+    public MongoCollection getCollectionFromDatabase(String collectionName, String databaseName)
+    {
+	return client.getDatabase(databaseName).getCollection(collectionName);
+    }
     
 }
